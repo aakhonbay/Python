@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Login and Registration</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+      <div class="container">
+
+      <div class="jumbotron">
+
+        <h1>Welcome</h1>
+
+      </div>
+
+      <div class="col-sm-6">
+
+
+        <h2>Registration</h2>
+        <!-- Errors -->
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        <!-- Errors -->
+        <form action="/add_user" method="post">
+            {% csrf_token %}
+
+        <!-- Name -->
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" name="name" value="" id="name" class="form-control">
+        </div>
+
+        <!-- Alias -->
+        <div class="form-group">
+            <label for="name">Alias:</label>
+            <input type="text" name="alias" value="" id="alias" class="form-control">
+        </div>
+
+        <!-- Email -->
+        <div class="form-group">
+            <label for="name">Email:</label>
+            <input type="email" name="email" value="" id="email" class="form-control">
+        </div>
+
+        <!-- Password -->
+        <div class="form-group">
+            <label for="name">Password:</label>
+            <input type="password" name="password" value="" id="password" class="form-control">
+        </div>
+
+        <p>*Password should be at least 8 characters</p>
+
+        <!-- Confirm Password -->
+        <div class="form-group">
+            <label for="name">Confirm Password:</label>
+            <input type="password" name="confirm_password" value="" id="confirm password" class="form-control">
+        </div>
+
+        <!-- Date of birth -->
+        <div class="form-group">
+            <label for="name">Date of birth:</label>
+            <input type="date" name="dob" value="" id="date of birth" class="form-control">
+        </div>
+
+        <input type="submit" value="Register" class="btn btn-success">
+        </form>
+      </div>
+
+      <div class="col-sm-6">
+        <h2>Login</h2>
+        <form action="/login" method="post">
+            {% csrf_token %}
+
+        <!-- Email -->
+        <div class="form-group">
+            <label for="name">Email:</label>
+            <input type="email" name="email" value="" id="email" class="form-control">
+        </div>
+
+        <!-- Password -->
+        <div class="form-group">
+            <label for="name">Password:</label>
+            <input type="password" name="password" value="" id="password" class="form-control">
+        </div>
+
+            <input type="submit" name="" value="Login" class="btn btn-success">
+
+        </form>
+      </div>
+
+      </div>
+    </body>
+</html>

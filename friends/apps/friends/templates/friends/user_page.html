@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        <a href="/welcome">Home</a> <a href="/logout">Logout</a>
+        {% for x in info %}
+        <h1>{{x.alias}}'s Profile</h1>
+        <h3> Name: {{x.name}} </h3>
+        <h3> Email: {{x.email}} </h3>
+        {% endfor %}
+    </body>
+</html>

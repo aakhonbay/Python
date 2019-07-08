@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Welcome</title>
+        <style>
+      table {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 50%;
+      }
+
+      td, th {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+      }
+
+      tr:nth-child(even) {
+          background-color: #dddddd;
+      }
+      </style>
+
+    </head>
+    <body>
+        <p><a href="/logout">Logout</a></p>   
+
+    <p><h2>Hello, {{request.session.name}}.</h2></p>
+
+
+        <h3>Here is the list of your friends:</h3>
+        {{this}}
+        <table border="1">
+            {% for x in user_friends %}
+            <tr>
+                <th>Alias</th>
+                <th>Action</th>
+            </tr>
+            <tr>
+                <td>{{x.friend.alias}}</td>
+                <td>
+                    <a href="user/{{x.friend.id}}">View Profile</a>
+                    <a href="delete/{{x.id}}">Remove as Friend</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        <h3>Other users not on your friends list:</h3>
+        <table border="1">
+            {% for x in all_users %}
+            <tr>
+                <th>Alias</th>
+                <th>Action</th>
+            </tr>
+            <tr>
+                <td><a href="user/{{x.id}}">{{x.alias}}</a></td>
+                <td>
+                    <a href="friend/{{x.id}}"><button>Add Friend</button></a></td>
+            </tr>
+
+
+            {% endfor %}
+        </table>
+    </body>
+</html>
